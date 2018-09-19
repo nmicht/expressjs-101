@@ -1,0 +1,4 @@
+PORT=3000
+DB_USER=root
+DB_PASSWORD=1234
+DB_NAME=sampledb
