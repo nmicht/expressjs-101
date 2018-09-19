@@ -39,3 +39,7 @@ npm install dotenv
 ```
 npm install nodemon
 ```
+
+# Estructura del proyecto
+
+Creamos los folders para los módulos del proyecto teniendo controladores, modelos, middlewares y rutas.
