@@ -42,4 +42,11 @@ npm install nodemon
 
 # Estructura del proyecto
 
-Creamos los folders para los módulos del proyecto teniendo controladores, modelos, middlewares y rutas.
+10. Creamos los folders para los módulos del proyecto teniendo controladores, modelos, middlewares y rutas.
+
+## Organización de rutas
+
+11. Las rutas de cada módulo del API se deben mantener por separado, y el archivo index de rutas solo debe entregar el conjunto de todas las rutas.  
+En el archivo `index.js` instanciamos el router y agregamos la ruta base.
+
+12. En `app.js` debemos cargar todas las rutas haciendo require de routes y agregando el router con `app.use(router)`.
