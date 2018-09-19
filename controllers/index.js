@@ -1,0 +1,1 @@
+exports.usersCtrl = require('./users');

@@ -50,3 +50,15 @@ npm install nodemon
 En el archivo `index.js` instanciamos el router y agregamos la ruta base.
 
 12. En `app.js` debemos cargar todas las rutas haciendo require de routes y agregando el router con `app.use(router)`.
+
+13. Agregamos el body-parser en `app.js` como un middleware para toda la aplicación y con ello poder procesar los requests como json.
+
+14. En el archivo index.js de routes cargamos las rutas de un módulo en específico, en este caso, de usuarios.
+
+15. En users.js de routes creamos cada ruta requerida, y cargamos el controlador que se hará cargo de la lógica.
+
+## Controladores
+
+16. En el archivo `index.js` de los controladores exportamos la clase UserCtrl que tendrá todos los métodos encargados de la lógica para el manejo de usuarios.
+
+17. Creamos la clase `UserCtrl` con todos los métodos que vayamos a utilizar. Es importante hacer binding de `this` por cada método para no perder el contexto al ejecutarlo en el router.
