@@ -11,7 +11,7 @@ class Validator {
   }
 
   static required(data) {
-    return data !== undefined && data !== null;
+    return data !== undefined && data !== null && data.length;
   }
 
   static email(data) {
@@ -19,20 +19,27 @@ class Validator {
   }
 
   static validate(req, res, next, rules) {
+    const error = {
+      message: 'Validation Error',
+      status: 409,
+      details: {},
+    };
+
     for (let part in rules) {
       for (let field in rules[part]) {
         let validators = rules[part][field].split(',');
         validators.forEach((f) => {
           if (!Validator[f](req[part][field] || '')) {
-            let err = new Error('Validation Error');
-            err.status = 409;
-            err.message = `The field ${field} should be a valid ${f}`;
-            return next(err);
+            if (Array.isArray(error.details[field])) {
+              error.details[field].push(`The field ${field} should be a valid ${f}`);
+            } else {
+              error.details[field] = [`The field ${field} should be a valid ${f}`];
+            }
           }
         });
       }
     }
-    return next();
+    Object.keys(error.details).length ? next(error) : next();
   }
 }
 
