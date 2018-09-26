@@ -95,3 +95,6 @@ Y nuestro método validate iterará sobre cada uno.
 22. El index de los controladores debe exportar el módulo de validator
 
 23. En el archivo de rutas debemos cargar los middlewares y agregar las validaciones que se desean en cada ruta.
+
+24. Agregar un manejador de errores es muy sencillo, lo importante es usar este middleware con un `use` en el router, y que el método revisa los cuatro argumentos, de otro modo, no funcionará.  
+En este caso el validador lanza un next con un objeto de error formateado a nuestro gusto, y el errorHandler que hemos recibido se encarga de lanzar la respuesta de error con el codigo y el formato del json.
