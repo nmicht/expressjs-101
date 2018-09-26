@@ -24,7 +24,10 @@ class Validator {
         let validators = rules[part][field].split(',');
         validators.forEach((f) => {
           if (!Validator[f](req[part][field] || '')) {
-            return next('error');
+            let err = new Error('Validation Error');
+            err.status = 409;
+            err.message = `The field ${field} should be a valid ${f}`;
+            return next(err);
           }
         });
       }
