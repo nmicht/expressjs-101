@@ -18,6 +18,7 @@ class UserCtrl {
     this.getAll = this.getAll.bind(this);
     this.get = this.get.bind(this);
     this.create = this.create.bind(this);
+    this.delete = this.delete.bind(this);
   }
 
   getAll(req, res) {
@@ -48,6 +49,12 @@ class UserCtrl {
     this.data.push(data);
 
     res.status(201).send(data);
+  }
+
+  delete(req, res) {
+    const index = this.data.findIndex(el => el.id === Number(req.params.userId));
+    this.data.splice(index, 1);
+    res.send();
   }
 }
 

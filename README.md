@@ -62,3 +62,6 @@ En el archivo `index.js` instanciamos el router y agregamos la ruta base.
 16. En el archivo `index.js` de los controladores exportamos la clase UserCtrl que tendrá todos los métodos encargados de la lógica para el manejo de usuarios.
 
 17. Creamos la clase `UserCtrl` con todos los métodos que vayamos a utilizar. Es importante hacer binding de `this` por cada método para no perder el contexto al ejecutarlo en el router.
+
+18. Agregamos los métodos necesarios para obtener todos los elementos, un elemento, eliminar, etc.  
+*Nota: De momento hemos metido datos hardcodeados y manipulado el arreglo de elementos por cuestión práctica. Mas adelante cambiaremos la lógica para conectar a la base de datos*
