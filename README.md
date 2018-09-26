@@ -65,3 +65,33 @@ En el archivo `index.js` instanciamos el router y agregamos la ruta base.
 
 18. Agregamos los métodos necesarios para obtener todos los elementos, un elemento, eliminar, etc.  
 *Nota: De momento hemos metido datos hardcodeados y manipulado el arreglo de elementos por cuestión práctica. Mas adelante cambiaremos la lógica para conectar a la base de datos*
+
+## Middlewares
+
+Los middlewares se utilizan para realizar acciones de proceso y validación antes de llegar al controlador.  
+En este caso, haremos un middleware para validar las entradas de la petición.
+
+19. Crear la clase Validator e incluir métodos estáticos para validar distintos tipos de cadenas e inputs.  
+Se puede tener un set de reglas regex que podrán ser utilizadas en el resto de los métodos.
+
+20. A nuestro validator le crearemos un método que debe recibir los parámetros de todo middleware: `req`, `res` y `next` pero que además recibirá un set de reglas que serán definidas en la ruta.
+
+21. Iterar por cada una de las reglas definidas y ejecutar los métodos definidos en las reglas.
+
+Ejemplo de reglas en la ruta
+```
+router.post('/', (req, res, next) => {
+  middlewares.validator.validate(req, res, next, {
+    body: {
+      name: 'word,required',
+      email: 'email,required',
+    },
+  });
+}, usersCtrl.create);
+```
+
+Y nuestro método validate iterará sobre cada uno.
+
+22. El index de los controladores debe exportar el módulo de validator
+
+23. En el archivo de rutas debemos cargar los middlewares y agregar las validaciones que se desean en cada ruta.
