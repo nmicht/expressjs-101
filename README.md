@@ -117,3 +117,12 @@ En este caso usaremos [mysql](https://github.com/felixge/node-mysql/) pero adem�
 Como estamos usando mysql debemos escapar los queries con `?` para valores y con `??` para campos, tablas, etc.
 
 28. Dado que obtener datos de la base de datos es un proceso asincrono, lo ideal es que esto regrese un promise y con ello, podremos manipularlo desde donde lo mandemos a llamar.
+
+## Modelos
+
+Un modelo es un objeto que representa una tabla de la base de datos generalmente, de modo que haremos tantos modelos como sean necesarios y dentro de estos meteremos métodos para la manipulación de la base de datos en específico para ese modelo.
+
+29. Crearemos nuestra clase para los usuarios con un constructor para definir todos sus atributos.
+
+20. Agregamos un metodo para acceder a la base de datos y procesar los resultados creando instancias del modelo en cuestion.  
+Es importante que el metodo sea estático para no requerir una instancia cuando aun no tenemos un usuario, pero queremos obtenerlo de la base de datos.

@@ -1,4 +1,4 @@
-const db = require('../db');
+const { User } = require('../models');
 
 class UserCtrl {
   constructor() {
@@ -24,7 +24,7 @@ class UserCtrl {
   }
 
   async getAll(req, res) {
-    let data = await db.selectAll('users');
+    let data = await User.getAll();
 
     const json = {
       data: data,
