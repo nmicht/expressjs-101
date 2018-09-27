@@ -19,7 +19,16 @@ class DB {
 
   selectAll(table) {
     return new Promise((resolve, reject) => {
-      this.connection.query('SELECT * from ??', [table], (error, results) => {
+      this.connection.query('SELECT * FROM ??', [table], (error, results) => {
+        if (error) return reject(error);
+        return resolve(results);
+      });
+    });
+  }
+
+  selectOne(table, id) {
+    return new Promise((resolve, reject) => {
+      this.connection.query('SELECT * FROM ?? WHERE id = ?', [table, id], (error, results) => {
         if (error) return reject(error);
         return resolve(results);
       });

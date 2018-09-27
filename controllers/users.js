@@ -33,11 +33,21 @@ class UserCtrl {
       page: 0,
     };
 
+    // In case user was not found
+    if (data.length === 0) {
+      res.status(204);
+    }
+
     res.send(json);
   }
 
-  get(req, res) {
-    const data = this.data.find(el => el.id === Number(req.params.userId));
+  async get(req, res) {
+    let data = await User.get(req.params.userId);
+
+    // In case user was not found
+    if (data.length === 0) {
+      res.status(404);
+    }
 
     res.send(data);
   }
