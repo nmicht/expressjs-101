@@ -96,5 +96,24 @@ Y nuestro método validate iterará sobre cada uno.
 
 23. En el archivo de rutas debemos cargar los middlewares y agregar las validaciones que se desean en cada ruta.
 
-24. Agregar un manejador de errores es muy sencillo, lo importante es usar este middleware con un `use` en el router, y que el método revisa los cuatro argumentos, de otro modo, no funcionará.  
-En este caso el validador lanza un next con un objeto de error formateado a nuestro gusto, y el errorHandler que hemos recibido se encarga de lanzar la respuesta de error con el codigo y el formato del json.
+## Manejador de errores con middleware
+
+Agregar un manejador de errores es muy sencillo, lo importante es usar crear un middleware y agregarlo al router con un `use`. El método del middleware recibe los cuatro argumentos, de otro modo, no funcionará.  
+
+En este caso el validador lanza un `next` con un objeto de error formateado a nuestro gusto, y el errorHandler que hemos recibido se encarga de lanzar la respuesta de error con el codigo y el formato del json.
+
+24. Crear un middleware que recibe `err`, valida su contenido, define las cabeceras y manda el response con el json procesado con los datos del error.
+
+25. En cualquier middleware que se desee lanzar un error, en el `next` se tiene que mandar ya sea un objeto Error con todo el stack trace o un objeto cualquier con todos los datos.
+
+## Conexión a la base de datos
+
+Existen [muchos paquetes en node](http://expressjs.com/es/guide/database-integration.html) para la conexión a la base de datos.
+En este caso usaremos [mysql](https://github.com/felixge/node-mysql/) pero además, haremos una abstracción para la manipulación de la base de datos.
+
+26. Crear una clase para la manipulación de la base de datos, con un constructor que realiza la conexion y la exportación será de una instancia para de esta manera lograr un singleton.
+
+27. En nuestra clase DB agregamos metodos para las diferentes acciones que queramos ejecutar en la base de datos.  
+Como estamos usando mysql debemos escapar los queries con `?` para valores y con `??` para campos, tablas, etc.
+
+28. Dado que obtener datos de la base de datos es un proceso asincrono, lo ideal es que esto regrese un promise y con ello, podremos manipularlo desde donde lo mandemos a llamar.

@@ -1,3 +1,5 @@
+const db = require('../db');
+
 class UserCtrl {
   constructor() {
     // User data temporary hardcoded
@@ -21,10 +23,12 @@ class UserCtrl {
     this.delete = this.delete.bind(this);
   }
 
-  getAll(req, res) {
+  async getAll(req, res) {
+    let data = await db.selectAll('users');
+
     const json = {
-      data: this.data,
-      total_count: this.data.length,
+      data: data,
+      total_count: data.length,
       per_page: 10,
       page: 0,
     };
