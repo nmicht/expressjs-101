@@ -29,7 +29,7 @@ class UserCtrl {
     const json = {
       data: data,
       total_count: data.length,
-      per_page: 10,
+      per_page: data.length,
       page: 0,
     };
 
@@ -52,16 +52,8 @@ class UserCtrl {
     res.send(data);
   }
 
-  create(req, res) {
-    const lastId = this.data[this.data.length - 1].id;
-    const data = {
-      id: lastId + 1,
-      name: req.body.name,
-      email: req.body.email,
-    };
-
-    this.data.push(data);
-
+  async create(req, res, next) {
+    let data = await User.create(req.body);
     res.status(201).send(data);
   }
 

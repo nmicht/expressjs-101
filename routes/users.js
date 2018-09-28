@@ -9,7 +9,7 @@ router.post('/', (req, res, next) => {
     body: {
       name: 'word,required',
       email: 'email,required',
-      caca: 'required',
+      unwanted: 'required',
     },
   });
 }, usersCtrl.create);

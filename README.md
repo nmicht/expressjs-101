@@ -126,3 +126,9 @@ Un modelo es un objeto que representa una tabla de la base de datos generalmente
 
 20. Agregamos un metodo para acceder a la base de datos y procesar los resultados creando instancias del modelo en cuestion.  
 Es importante que el metodo sea estático para no requerir una instancia cuando aun no tenemos un usuario, pero queremos obtenerlo de la base de datos.
+
+21. Método para crear nuevos recursos, en la base de datos un `insert` que permite mandar el recurso completo
+
+22. En el modelo, un método estático `create` que manda a ejecutar el método de la base de datos, y en caso de recibir un `insertId` en la respuesta, crea el objeto User para regresarlo al controlador, en caso contrario, regresa un arreglo vacio.
+
+23. En el controlador, manda a llamar el método create del modelo y manda la respuesta con un código 201.

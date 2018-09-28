@@ -10,8 +10,8 @@ class User {
   static async getAll() {
     const data = await db.selectAll('users');
     const response = [];
-    data.forEach((r) => {
-      response.push(new User(r));
+    data.forEach((row) => {
+      response.push(new User(row));
     });
     return response;
   }
@@ -19,6 +19,16 @@ class User {
   static async get(userId) {
     const data = await db.selectOne('users', userId);
     return data.length !== 0 ? new User(data[0]) : data;
+  }
+
+  static async create({ name, email }) {
+    let response = await db.insert('users', { name, email });
+
+    const id = response.insertId;
+    if (id > 0) {
+      return new User({ id, name, email });
+    }
+    return [];
   }
 }
 
