@@ -132,3 +132,10 @@ Es importante que el metodo sea estático para no requerir una instancia cuando 
 22. En el modelo, un método estático `create` que manda a ejecutar el método de la base de datos, y en caso de recibir un `insertId` en la respuesta, crea el objeto User para regresarlo al controlador, en caso contrario, regresa un arreglo vacio.
 
 23. En el controlador, manda a llamar el método create del modelo y manda la respuesta con un código 201.
+
+## Manejo de errores de la base de datos
+
+24. En nuestra clase que maneja la base de datos agregamos métodos para procesar los errores y devolver un objeto de acuerdo a nuestro diseño.
+En este caso solo he agregado un método para manipular mensajes de error con entradas duplicadas, pero se pueden procesar distintos mensajes y crear un formato estandarizado para nuestra aplicación.
+
+25. Todos los métodos que estan recibiendo promises deben manejarlas a través de `try-catch`. En este caso lo aplicamos en el modelo y en el controlador.

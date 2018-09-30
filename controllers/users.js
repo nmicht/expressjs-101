@@ -53,8 +53,12 @@ class UserCtrl {
   }
 
   async create(req, res, next) {
-    let data = await User.create(req.body);
-    res.status(201).send(data);
+    try {
+      let data = await User.create(req.body);
+      res.status(201).send(data);
+    } catch (e) {
+      next(e);
+    }
   }
 
   delete(req, res) {

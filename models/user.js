@@ -22,7 +22,12 @@ class User {
   }
 
   static async create({ name, email }) {
-    let response = await db.insert('users', { name, email });
+    let response;
+    try {
+      response = await db.insert('users', { name, email });
+    } catch (e) {
+      throw e;
+    }
 
     const id = response.insertId;
     if (id > 0) {
