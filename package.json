@@ -21,5 +21,8 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1"
+  },
+  "scripts": {
+    "start:dev": "./node_modules/.bin/nodemon"
   }
 }
