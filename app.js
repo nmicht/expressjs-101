@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Load routes into app
 app.use(router);
 
+// Handle error responses
 app.use(errorHandler);
 
-app.listen(process.env.PORT, () => console.log(`Example app listening on port ${process.env.PORT}!`));
+app.listen(process.env.PORT, () => console.log(`ExpressJS-101 app listening on port ${process.env.PORT}!`));
