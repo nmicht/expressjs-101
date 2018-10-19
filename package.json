@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start:dev": "./node_modules/.bin/nodemon"
   },
   "author": "Michelle Torres <hola@michelletorres.mx>",
   "license": "GPL-3.0",
@@ -12,6 +12,8 @@
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
+    "fs": "0.0.1-security",
+    "multer": "^1.4.1",
     "mysql": "^2.16.0",
     "nodemon": "^1.18.4"
   },
@@ -21,8 +23,5 @@
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1"
-  },
-  "scripts": {
-    "start:dev": "./node_modules/.bin/nodemon"
   }
 }
