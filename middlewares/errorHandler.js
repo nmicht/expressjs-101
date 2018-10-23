@@ -3,7 +3,9 @@ const fs = require('fs');
 function eraseFiles(req) {
   // Iterate over req.file, req.files and req.fields to remove all the files
   if (req.file) {
-    fs.unlink(req.file.path);
+    fs.unlink(req.file.path, () => {
+      console.log('there was an error trying to erase the file');
+    });
   }
 }
 

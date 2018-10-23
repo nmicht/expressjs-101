@@ -34,7 +34,7 @@ class Auth {
     // req.session.user.canDo('edit')
   }
 
-  getHeaderToken(bearer) {
+  getHeaderToken(bearer = '') {
     return bearer.split(' ')[1];
   }
 
@@ -49,7 +49,10 @@ class Auth {
     // } else {
     //   return true;
     // }
-    return true;
+    if (this.token) {
+      return true;
+    }
+    return false;
   }
 }
 

@@ -29,7 +29,7 @@ class Validator {
       for (let field in rules[part]) {
         let validators = rules[part][field].split(',');
         validators.forEach((f) => {
-          if (!Validator[f](req[part][field] || '')) {
+          if (!Validator[f](req[part] && req[part][field] || '')) {
             if (Array.isArray(error.details[field])) {
               error.details[field].push(`The field ${field} should be a valid ${f}`);
             } else {

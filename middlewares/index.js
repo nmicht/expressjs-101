@@ -1,4 +1,4 @@
-exports.validator = require('./validator');
+exports.Validator = require('./validator');
 
 exports.auth = require('./auth');
 
